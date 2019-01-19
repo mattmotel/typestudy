@@ -5,9 +5,10 @@
 
 # Try it out
 
-?name=Wordmark
+`?name=Wordmark`
 or
-random=yes
+`random=yes`
 
 like this
-localhost:8000/index.html?name=Word&random=yes
+
+`localhost:8000/index.html?name=Word&random=yes`
