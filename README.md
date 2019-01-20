@@ -5,7 +5,7 @@
 
 # Try it out
 
-`?name=Wordmark`
+`name=Wordmark`
 or
 `random=yes`
 
