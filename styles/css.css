@@ -1,15 +1,12 @@
 body {
-
   background: #eee;
   color: #111 font-family: san-serif;
   padding: 50px 0px 20px 0px;
-
 }
 
 .dark {
   background: #333;
   color: #eee;
-
 }
 
 .module {
@@ -44,7 +41,6 @@ body {
   position: absolute;
   top: 8px;
   left: 10px;
-
 }
 
 .delete {
@@ -75,13 +71,10 @@ body {
 }
 
 .selected .delete {
-
   opacity: .1;
 }
 
-
 #ui {
-
   padding: 10px;
   position: fixed;
   top: 0px;
@@ -106,14 +99,17 @@ body {
   cursor: pointer;
   display: inline-block;
   margin-left: 10px;
-
+  transition: .25s all;
 }
 
 .button:hover {
-  opacity: .5;
+  transform: scale(0.8);
 }
 
-
+#custom-handle:hover {
+  background: #333;
+  color: #eee;
+}
 
 #slider {
   width: 300px;
@@ -121,16 +117,11 @@ body {
 }
 
 #dark {
-
   margin-left: 50px;
-
-
 }
-
 
 .on {
   opacity: .2;
-
 }
 
 #custom-handle {
