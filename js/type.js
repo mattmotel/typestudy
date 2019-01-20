@@ -52,6 +52,17 @@ $(document).ready(function() {
   //   $(this).parent().hide();
   // });
 
+
+
+  $("#shuffle").click(function() {
+    var cards = $(".module");
+    for (var i = 0; i < cards.length; i++) {
+      var target = Math.floor(Math.random() * cards.length - 1) + 1;
+      var target2 = Math.floor(Math.random() * cards.length - 1) + 1;
+      cards.eq(target).before(cards.eq(target2));
+    }
+  });
+
   $("#dark").click(function() {
     $('body').toggleClass("dark");
     $(this).toggleClass("on");
@@ -75,6 +86,8 @@ $(document).ready(function() {
 });
 
 //Randomize order if random=yes in url
+
+
 
 if (getQueryVariable("random") == 'yes') {
   var cards = $(".module");
