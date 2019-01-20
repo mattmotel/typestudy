@@ -3,39 +3,49 @@
 <head>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
   <style>
     body {
-      background: black;
-      font-family: san-serif;
-      padding-top:50px;
 
+      background: #111;
+      color: #eee;
+
+      font-family: san-serif;
+      padding-top: 50px;
+
+    }
+
+    .dark {
+      background: #eee;
+      color: #111
     }
 
     .module {
       cursor: pointer;
       float: left;
-      font-size:50px;
-      width:22.5%;
+      font-size: 50px;
       min-width: 200px;
-      height:100px;
-      padding: 20px 10px 10px 10px;
-      border: 5px solid #333;
+      height: 48px;
+      padding: 20px 10px;
+      border: 3px solid rgba(100, 100, 100, .5);
       margin: 5px;
-      background: #000;
-      color: #fff;
       opacity: .9;
       position: relative;
-      overflow:hidden;
+      overflow: hidden;
     }
 
     .selected {
-      border: 5px solid lightgreen;
+      border: 3px solid rgba(0, 210, 40, .5);
+      opacity: 1;
       background: #fff;
       color: #000;
-      opacity: 1;
+    }
+
+    .dark .selected {
+      background: #000;
+      color: #fff;
     }
 
     .name {
@@ -59,49 +69,61 @@
     }
 
     .selected .delete {
-      color: black;
+
       opacity: .1;
     }
 
 
+    #ui {
 
-    #ui{
-
-      padding:10px;
+      padding: 10px;
       position: fixed;
       top: 0px;
       left: 0px;
-      width:100%;
-      background: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      background: rgba(20, 20, 20, .75);
       z-index: 20;
     }
 
-    .ui{
-      float:left;
+    .ui {
+      float: left;
+      color: #000;
     }
 
-
-
-    #slider{
-      width:300px;
-      margin-top:10px;
-    }
-
-    #best {
-
-      padding: 10px;
-      background: #eee;
+    .button {
+      font-size: 20px;
+      padding: 5px;
+      height: 20px;
+      width: 20px;
       font-family: sans-serif;
       z-index: 10;
-      border: 1px solid #333;
       cursor: pointer;
-      display:inline-block;
-      margin-left:60px;
+      display: inline-block;
+      margin-left: 10px;
+
+    }
+
+    .button:hover {
+      opacity: .5;
     }
 
 
-    #best.on {
-      background: #666;
+
+    #slider {
+      width: 300px;
+      margin-top: 10px;
+    }
+
+    #dark {
+
+      margin-left: 50px;
+
+
+    }
+
+
+    .on {
+      opacity: .4;
 
     }
 
@@ -114,8 +136,13 @@
       line-height: 1.6em;
     }
 
+    .hide {
+      display: none;
+    }
 
-
+    .selected.hide {
+      display: block;
+    }
   </style>
 </head>
 
@@ -123,37 +150,47 @@
 <body>
 
   <script>
-  $( function() {
-    var handle = $( "#custom-handle" );
+    $(function() {
+      var handle = $("#custom-handle");
 
-    $( "#slider" ).slider({
-      value: 50,
-      min: 30,
-      max: 100,
-      create: function() {
-        handle.text( $( this ).slider( "value" ) );
+      $("#slider").slider({
+        value: 48,
+        min: 24,
+        max: 120,
+        create: function() {
+          handle.text($(this).slider("value"));
 
-      },
-      stop: function( event, ui ) {
-        handle.text( ui.value );
-          $(".module").css({ 'font-size': $( "#slider" ).slider( "value" )  });
-      }
+        },
+        stop: function(event, ui) {
+          handle.text(ui.value);
+          $(".module").css({
+            'font-size': $("#slider").slider("value")
+          });
+          $(".module").css({
+            'height': $("#slider").slider("value")
+          });
+        }
+      });
     });
-  } );
   </script>
 
-<div id="ui">
+  <div id="ui">
 
-  <div id="slider" class="ui">
-    <div id="custom-handle" class="ui-slider-handle"></div>
+    <div id="slider" class="ui">
+      <div id="custom-handle" class="ui-slider-handle"></div>
+    </div>
+
+    <div id="dark" class="ui button">&#127747;</div>
+
+    <div id="best" class="ui button">&#11088;</div>
+
+    <div id="reset" class="ui button">&#x1F504;</div>
+
+
+
+
+
   </div>
-
-  <div id="best" class="ui">Toggle Favorites</div>
-
-
-
-
-</div>
 
 
 
@@ -412,8 +449,8 @@
       // "MetricTest-SemiboldItalic",
       // "MetricTest-Thin",
       // "MetricTest-ThinItalic",
-      "Muli-Black.ttf",
-      "Muli-BlackItalic.ttf",
+      "Muli-Black",
+      "Muli-BlackItalic",
       // "Muli-Bold.ttf",
       // "Muli-BoldItalic.ttf",
       // "Muli-ExtraBold.ttf",
@@ -421,7 +458,7 @@
       // "Muli-ExtraLight.ttf",
       // "Muli-ExtraLightItalic.ttf",
       // "Muli-Italic.ttf",
-      "Muli-Light.ttf",
+      "Muli-Light",
       // "Muli-LightItalic.ttf",
       // "Muli-Regular.ttf",
       // "Muli-SemiBold.ttf",
@@ -657,20 +694,24 @@
     var i;
     for (i = 0; i < fonts.length; i++) {
       console.log("fonts[i]");
-      document.write('<div id="' + i + '" class="module any" style="font-family:' + fonts[i] + ';"><div class="name">' + fonts[i] + '</div><div class="contender">' + name + '</div><span class="delete">Delete</span></div>');
+      document.write('<div id="' + i + '" class="module" style="font-family:' + fonts[i] + ';"><div class="name">' + fonts[i] + '</div><div class="contender">' + name + '</div><span class="delete">Delete</span></div>');
     }
 
     var $content = $('.module');
 
     $(document).ready(function() {
-
       for (i = 0; i < fonts.length; i++) {
-
         if (localStorage.getItem(i) === 'true') {
           $('#' + i).addClass('selected');
         }
-
       }
+
+      $(".module").click(function() {
+        $(this).toggleClass("selected");
+        localStorage.setItem(this.id, $content.hasClass('selected'));
+      });
+
+
 
 
       $(".delete").click(function() {
@@ -678,14 +719,19 @@
       });
 
 
-      $(".module").click(function() {
-        $(this).toggleClass("selected");
-        localStorage.setItem(this.id, $content.hasClass('selected'));
-
+      $("#dark").click(function() {
+        $('body').toggleClass("dark");
       });
 
+      $("#reset").click(function() {
+        localStorage.clear();
+        location.reload();
+      });
+
+
+
       $("#best").click(function() {
-        $('.module:not(.selected)').toggle();
+        $('.module').toggleClass("hide");
         $(this).toggleClass("on");
       });
 
